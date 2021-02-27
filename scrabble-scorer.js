@@ -102,22 +102,39 @@ const scoringAlgorithms = [simpleScoreObj, vowelBonusObj, scrabbleObj];
 
 // Let the user select which scoring algorithm to use when program scores a word.
 function scorerPrompt() {
-  let whichScorer = input.question(`Which scoring algorithm would you like to use?\n 0. Simple: Each letter is worth 1 point\n1. Vowel Bonus - Vowels are 3pts, consonants are 1 pt.\n2. Scrabble: The traditional scoring algorithm\nEnter 0, 1, or 2 `);
+  let whichScorer = input.question(`Which scoring algorithm would you like to use?\n 0. Simple: One point per character\n 1. Vowel Bonus: Vowels are worth 3 points\n 2. Scrabble: Uses scrabble point system\nEnter 0, 1, or 2: `);
+  if (whichScorer === 0) {
+    console.log(`Score for '${userWord}' : ${scoringAlgorithms[0].scorerFunction(userWord)}`)
+  } else if (whichScorer === 1) {
+    console.log(`Score for '${userWord}' : ${scoringAlgorithms[1].scorerFunction(userWord)}`)
+  } else {
+    console.log(`Score for '${userWord}' : ${scoringAlgorithms[2].scorerFunction(userWord)}`)
+  }
   return scoringAlgorithms[whichScorer];
 }
-console.log("algorithm name: ", scoringAlgorithms[0]);
-console.log("scorerFunction result: ", scoringAlgorithms[0])
 
+// Use the oldPointStructure to write a new function so that a single search will identify the point value for each letter.
+function transform(oldPointStructure) {
+  // create an array to hold the point/alphabet objects
+  let newPointObj = []
+  for (key in oldPointStructure) {
+    for (let i = 0; i < oldPointStructure[key].length; i++) {
+      oldPointStructure[oldPointStructure[pointValue][i].toLowerCase()] = Number(pointValue);
+    }
+  }
+  oldPointStructure = newPointObj;
+  return oldPointStructure;
+};
 
+let newPointStructure = transform(oldPointStructure);
+newPointStructure[' '] = 0
 
-function transform() {};
-
-let newPointStructure;
 
 function runProgram() {
    initialPrompt();
-   
+   scorerPrompt();
 }
+
 
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
