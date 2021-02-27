@@ -2,6 +2,8 @@
 
 const input = require("readline-sync");
 
+let vowels = ['A', 'E', 'I', 'O', 'U'];
+
 const oldPointStructure = {
   1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
   2: ['D', 'G'],
@@ -31,18 +33,51 @@ function oldScrabbleScorer(word) {
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
+let word = "";
 
-function initialPrompt() {
-   console.log("Let's play some scrabble! Enter a word:");
+function initialPrompt(word) {
+  console.log("Let's play some scrabble!" + "\n");
+  word = input.question("Enter a word to score: ");
+  return oldScrabbleScorer(word)
 };
+console.log(initialPrompt(word));
 
-let simpleScore;
 
-let vowelBonusScore;
+// Function takes a word as a parameter and returns a numerical score where each letter is worth 1 point
+let simpleScore = function(word) {
+  let score = 0
+  for (let i = 0; i < word.length; i++) {
+    score += 1;
+  }
+  return score;
+}
+console.log(simpleScore(initialPrompt) + "\n");
+
+
+
+// Function the takes a word as a parameter and returns a score where each consonant is worth 1 point and each vowel is worth 3 points
+let vowelBonusScore = function(word) {
+  let score = 0;
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === vowels) {
+      score += 3;
+    } else {
+      score += 1;
+    }
+  }
+  return score;
+}
+console.log(vowelBonusScore(initialPrompt) + "\n");
+
+
 
 let scrabbleScore;
 
+
+// Organize all three scoring options into an array called scoringAlgorithms
+  // populate with three keys for each scoring object: name, description, scorerFunction
 const scoringAlgorithms = [];
+
 
 function scorerPrompt() {}
 
