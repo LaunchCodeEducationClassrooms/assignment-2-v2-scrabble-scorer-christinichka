@@ -70,7 +70,7 @@ function vowelBonusScore(word) {
 
 
 function scrabbleScore(word) {
-  word = word.toLowercase();
+  word = word.toUppercase();
   let score = 0;
   for (let i = 0; i < word.length; i++) {
   score += 1;
@@ -116,10 +116,10 @@ function scorerPrompt() {
 // Use the oldPointStructure to write a new function so that a single search will identify the point value for each letter.
 function transform(oldPointStructure) {
   // create an array to hold the point/alphabet objects
-  let newPointObj = []
+  let newPointObj = {};
   for (key in oldPointStructure) {
     for (let i = 0; i < oldPointStructure[key].length; i++) {
-      oldPointStructure[oldPointStructure[pointValue][i].toLowerCase()] = Number(pointValue);
+      newPointObj[(oldPointStructure[key][i].toLowerCase())] = Number(key);
     }
   }
   oldPointStructure = newPointObj;
