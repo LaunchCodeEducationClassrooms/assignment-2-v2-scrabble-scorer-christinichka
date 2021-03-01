@@ -70,31 +70,31 @@ function vowelBonusScore(word) {
 
 
 function scrabbleScore(word) {
-//   word = word.toLowercase();
-//   let score = 0;
-//   for (let i = 0; i < word.length; i++) {
-//   score += 1;
-//   }
-//   return score;
+  word = word.toLowercase();
+  let score = 0;
+  for (let i = 0; i < word.length; i++) {
+  score += 1;
+  }
+  return score;
 }
 
 // Individual Scoring Objects to hold the information about each scoring function
 let simpleScoreObj = {
   name: 'Simple Score',
   description: 'Each letter is worth 1 point.',
-  scorerFunction: 'A function with a parameter for user input that returns a score.'
+  scorerFunction: simpleScore
 }
 
 let vowelBonusObj = {
   name: 'Bonus Vowels',
   description: 'Vowels are 3pts, consonants are 1 pt.',
-  scorerFunction: 'A function that returns a score based on the number of vowels and consonants.'
+  scorerFunction: vowelBonusScore
 }
 
 let scrabbleObj = {
   name: 'Scrabble',
   description: 'The traditional scoring algorithm.',
-  scorerFunction: 'Uses the oldScrabbleScorer() function to determine the score for a given word.'
+  scorerFunction: scrabbleScore
 }
 
 // Array to organize the three scoring objects and their keys (name, description, scorerFunction)
