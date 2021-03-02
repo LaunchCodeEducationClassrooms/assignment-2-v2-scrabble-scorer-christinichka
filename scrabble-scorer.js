@@ -133,8 +133,7 @@ function transform(obj) {
       newPointObj[(obj[key][i]).toUpperCase()] = Number(key);
     }
   }
-  obj = newPointObj;
-  return obj;
+  return newPointObj
 };
 
 let newPointStructure = transform(oldPointStructure);
