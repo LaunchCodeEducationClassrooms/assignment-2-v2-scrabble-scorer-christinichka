@@ -68,8 +68,12 @@ function scrabbleScore(word) {
   word = word.toUpperCase();
   let score = 0;
   for (let i = 0; i < word.length; i++) {
-        score += newPointStructure[word[i]];
+      for (letter in newPointStructure) {
+        if (letter === word[i]) {
+          score += newPointStructure[letter];
       }
+    }
+  }
   return score;
 }
 
@@ -122,7 +126,7 @@ function transform(oldPointStructure) {
 };
 
 let newPointStructure = transform(oldPointStructure);
-newPointStructure[' '] = 0
+// newPointStructure[' '] = 0
 
 
 function runProgram() {
