@@ -113,16 +113,28 @@ function scorerPrompt() {
 }
 
 // Use the oldPointStructure to write a new function so that a single search will identify the point value for each letter.
-function transform(oldPointStructure) {
+// function transform(oldPointStructure) {
+//   // create an array to hold the point/alphabet objects
+//   let newPointObj = {};
+//   for (key in oldPointStructure) {
+//     for (let i = 0; i < oldPointStructure[key].length; i++) {
+//       newPointObj[(oldPointStructure[key][i]).toUpperCase()] = Number(key);
+//     }
+//   }
+//   oldPointStructure = newPointObj;
+//   return oldPointStructure;
+// };
+
+function transform(obj) {
   // create an array to hold the point/alphabet objects
   let newPointObj = {};
-  for (key in oldPointStructure) {
-    for (let i = 0; i < oldPointStructure[key].length; i++) {
-      newPointObj[(oldPointStructure[key][i]).toUpperCase()] = Number(key);
+  for (key in obj) {
+    for (let i = 0; i < obj[key].length; i++) {
+      newPointObj[(obj[key][i]).toUpperCase()] = Number(key);
     }
   }
-  oldPointStructure = newPointObj;
-  return oldPointStructure;
+  obj = newPointObj;
+  return obj;
 };
 
 let newPointStructure = transform(oldPointStructure);
