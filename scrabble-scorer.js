@@ -65,14 +65,10 @@ function vowelBonusScore(word) {
 
 
 function scrabbleScore(word) {
-  word = word.toUpperCase();
+  word = word.toLowerCase();
   let score = 0;
   for (let i = 0; i < word.length; i++) {
-      for (letter in newPointStructure) {
-        if (letter === word[i]) {
-          score += newPointStructure[letter];
-      }
-    }
+    score+= newPointStructure[word[i]];
   }
   return score;
 }
@@ -120,20 +116,20 @@ function transform(obj) {
   let newPointObj = {};
   for (key in obj) {
     for (let i = 0; i < obj[key].length; i++) {
-      let letter = obj[key][i];
-      letter = letter.toLowerCase();
-      newPointObj[`${letter}`] = Number(key); 
+      let letterItem = obj[key][i];
+      letterItem = letterItem.toLowerCase();
+      newPointObj[`${letterItem}`] = Number(key); 
     }
   }
   return newPointObj;
 }
 
 let newPointStructure = transform(oldPointStructure);
-newPointStructure[' '] = 0
+newPointStructure[' '] = 0;
 
-console.log("letter a: ", newPointStructure.a);
-console.log("letter j: ", newPointStructure.j);
-console.log("letter z: ", newPointStructure["z"]);
+// console.log("letter a: ", newPointStructure.a);
+// console.log("letter j: ", newPointStructure.j);
+// console.log("letter z: ", newPointStructure["z"]);
 
 
 function runProgram() {
