@@ -106,38 +106,34 @@ function scorerPrompt() {
     console.log(`Score for '${word}' : ${scoringAlgorithms[0].scoringFunction(word)}`)
   } else if (whichScorer == 1) {
     console.log(`Score for '${word}' : ${scoringAlgorithms[1].scoringFunction(word)}`)
-  } else {
+  } else if (whichScorer == 2) {
     console.log(`Score for '${word}' : ${scoringAlgorithms[2].scoringFunction(word)}`)
+  } else {
+    initialPrompt();
   }
   return whichScorer;
 }
 
 // Use the oldPointStructure to write a new function so that a single search will identify the point value for each letter.
-// function transform(oldPointStructure) {
-//   // create an array to hold the point/alphabet objects
-//   let newPointObj = {};
-//   for (key in oldPointStructure) {
-//     for (let i = 0; i < oldPointStructure[key].length; i++) {
-//       newPointObj[(oldPointStructure[key][i]).toUpperCase()] = Number(key);
-//     }
-//   }
-//   oldPointStructure = newPointObj;
-//   return oldPointStructure;
-// };
-
 function transform(obj) {
   // create an array to hold the point/alphabet objects
   let newPointObj = {};
   for (key in obj) {
     for (let i = 0; i < obj[key].length; i++) {
-      newPointObj[(obj[key][i]).toUpperCase()] = Number(key);
+      let letter = obj[key][i];
+      letter = letter.toLowerCase();
+      newPointObj[`${letter}`] = Number(key); 
     }
   }
-  return newPointObj
-};
+  return newPointObj;
+}
 
 let newPointStructure = transform(oldPointStructure);
-// newPointStructure[' '] = 0
+newPointStructure[' '] = 0
+
+console.log("letter a: ", newPointStructure.a);
+console.log("letter j: ", newPointStructure.j);
+console.log("letter z: ", newPointStructure["z"]);
 
 
 function runProgram() {
